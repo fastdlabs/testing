@@ -8,6 +8,7 @@
  */
 
 
+use FastD\Http\Response;
 use FastD\Testing\TestCase;
 
 
@@ -17,6 +18,15 @@ class TestCaseTest extends PHPUnit_Framework_TestCase
     {
         $testing = new TestCase();
 
-        print_r($testing);
+        $serverRequest = $testing->request('GET', '/');
+
+        $this->assertEquals('/', $serverRequest->getUri()->getPath());
+    }
+
+    public function testTestCaseHandleResponse()
+    {
+        $testing = new TestCase();
+
+        $testing->response(new Response('hello world'), 'hello world');
     }
 }
