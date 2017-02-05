@@ -39,7 +39,7 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     public function response(ResponseInterface $response, $assert)
     {
-        $this->assertEquals($response->getBody(), $assert);
+        $this->assertEquals((string) $response->getBody(), $assert);
     }
 
     /**
