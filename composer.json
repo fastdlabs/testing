@@ -16,9 +16,6 @@
     "autoload": {
         "psr-4": {
             "FastD\\Testing\\": "src"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     }
 }

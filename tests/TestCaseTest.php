@@ -9,7 +9,7 @@
 
 
 use FastD\Http\Response;
-use FastD\Testing\TestCase;
+use FastD\Testing\Testing as TestCase;
 
 
 class TestCaseTest extends PHPUnit_Framework_TestCase

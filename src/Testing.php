@@ -10,6 +10,7 @@
 namespace FastD\Testing;
 
 
+use Faker\Factory;
 use FastD\Http\ServerRequest;
 use PHPUnit_Framework_TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -18,7 +19,7 @@ use Psr\Http\Message\ResponseInterface;
  * Class TestCase
  * @package FastD\Testing
  */
-class TestCase extends PHPUnit_Framework_TestCase
+class Testing extends PHPUnit_Framework_TestCase
 {
     /**
      * @param $method
@@ -54,8 +55,8 @@ class TestCase extends PHPUnit_Framework_TestCase
     /**
      * @return \Faker\Generator
      */
-    public function createFake()
+    public function fake()
     {
-        return fake();
+        return Factory::create();
     }
 }
