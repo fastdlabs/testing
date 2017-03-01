@@ -63,6 +63,38 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @param ResponseInterface $response
+     */
+    public function isServerInterval(ResponseInterface $response)
+    {
+        $this->assertEquals(500, $response->getStatusCode());
+    }
+
+    /**
+     * @param ResponseInterface $response
+     */
+    public function isBadRequest(ResponseInterface $response)
+    {
+        $this->assertEquals(400, $response->getStatusCode());
+    }
+
+    /**
+     * @param ResponseInterface $response
+     */
+    public function isNotFound(ResponseInterface $response)
+    {
+        $this->assertEquals(404, $response->getStatusCode());
+    }
+
+    /**
+     * @param ResponseInterface $response
+     */
+    public function isSuccessful(ResponseInterface $response)
+    {
+        $this->assertEquals(200, $response->getStatusCode());
+    }
+
+    /**
      * Returns the test database connection.
      *
      * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
