@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cdd3ee7896972b46dfaad533ed409076",
-    "content-hash": "5f8e8be5a8a385dd2e3ddc72e9dac4ab",
+    "hash": "a5f0218583ea3fe5c563bf30d47f7e5d",
+    "content-hash": "a43a9f062e0c02b6c0abb20e66a81640",
     "packages": [
         {
             "name": "fastd/http",
