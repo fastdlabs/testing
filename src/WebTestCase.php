@@ -12,8 +12,6 @@ namespace FastD\Testing;
 
 use Faker\Factory;
 use FastD\Http\ServerRequest;
-use PHPUnit_Extensions_Database_DataSet_IDataSet;
-use PHPUnit_Extensions_Database_DB_IDatabaseConnection;
 use PHPUnit_Extensions_Database_TestCase;
 use Psr\Http\Message\ResponseInterface;
 

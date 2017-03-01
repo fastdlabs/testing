@@ -17,5 +17,8 @@
         "psr-4": {
             "FastD\\Testing\\": "src"
         }
+    },
+    "config": {
+        "bin": "bin"
     }
 }
