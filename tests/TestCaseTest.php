@@ -9,8 +9,9 @@
 
 
 use FastD\Http\Response;
-use FastD\Testing\Testing as TestCase;
 
+
+include_once __DIR__ . '/TestCase.php';
 
 class TestCaseTest extends PHPUnit_Framework_TestCase
 {
