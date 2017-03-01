@@ -12,6 +12,8 @@ namespace FastD\Testing;
 
 use Faker\Factory;
 use FastD\Http\ServerRequest;
+use PHPUnit_Extensions_Database_DataSet_IDataSet;
+use PHPUnit_Extensions_Database_DB_IDatabaseConnection;
 use PHPUnit_Extensions_Database_TestCase;
 use Psr\Http\Message\ResponseInterface;
 
@@ -19,7 +21,7 @@ use Psr\Http\Message\ResponseInterface;
  * Class TestCase
  * @package FastD\Testing
  */
-abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
+class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
     /**
      * @param $method
@@ -40,7 +42,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     public function response(ResponseInterface $response, $assert)
     {
-        $this->assertEquals((string) $response->getBody(), $assert);
+        $this->assertEquals((string)$response->getBody(), $assert);
     }
 
     /**
@@ -58,5 +60,38 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     public function fake()
     {
         return Factory::create();
+    }
+
+    /**
+     * Returns the test database connection.
+     *
+     * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
+     */
+    protected function getConnection()
+    {
+        /**
+         * if ($this->conn === null) {
+         *      if (self::$pdo == null) {
+         *          self::$pdo = new PDO('mysql:host=127.0.0.1;dbname=ci', 'travis');
+         *      }
+         *      $this->conn = $this->createDefaultDBConnection(self::$pdo, ':memory:');
+         *  }
+         *
+         *  return $this->conn;
+         */
+    }
+
+    /**
+     * Returns the test dataset.
+     *
+     * @return PHPUnit_Extensions_Database_DataSet_IDataSet
+     */
+    protected function getDataSet()
+    {
+        /**
+         * return new PHPUnit_Extensions_Database_DataSet_YamlDataSet(
+         *      __DIR__ . "/dataset/guestbook.yml"
+         * );
+         */
     }
 }

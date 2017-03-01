@@ -13,7 +13,21 @@ use FastD\Http\Response;
 
 include_once __DIR__ . '/TestCase.php';
 
-class TestCaseTest extends TestCase
+class TestCaseTest extends PHPUnit_Framework_TestCase
 {
+    public function testTestCaseFakeData()
+    {
+        $testing = new TestCase();
 
+        $serverRequest = $testing->request('GET', '/');
+
+        $this->assertEquals('/', $serverRequest->getUri()->getPath());
+    }
+
+    public function testTestCaseHandleResponse()
+    {
+        $testing = new TestCase();
+
+        $testing->response(new Response('hello world'), 'hello world');
+    }
 }
