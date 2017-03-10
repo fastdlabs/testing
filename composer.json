@@ -7,7 +7,6 @@
         }
     ],
     "require": {
-        "fzaninotto/faker": "~1.6.0",
         "fastd/http": "~3.0.0"
     },
     "require-dev": {
@@ -17,8 +16,5 @@
         "psr-4": {
             "FastD\\Testing\\": "src"
         }
-    },
-    "config": {
-        "bin": "bin"
     }
 }

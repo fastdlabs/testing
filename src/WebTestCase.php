@@ -42,7 +42,16 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     public function response(ResponseInterface $response, $assert)
     {
-        $this->assertEquals((string)$response->getBody(), $assert);
+        $this->assertEquals((string) $response->getBody(), $assert);
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @param array $assert
+     */
+    public function json(ResponseInterface $response, array $assert)
+    {
+        $this->assertEquals((string) $response->getBody(), json_encode($assert));
     }
 
     /**
@@ -52,14 +61,6 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     public function status(ResponseInterface $response, $statusCode)
     {
         $this->assertEquals($response->getStatusCode(), $statusCode);
-    }
-
-    /**
-     * @return \Faker\Generator
-     */
-    public function fake()
-    {
-        return Factory::create();
     }
 
     /**
@@ -101,16 +102,6 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     protected function getConnection()
     {
-        /**
-         * if ($this->conn === null) {
-         *      if (self::$pdo == null) {
-         *          self::$pdo = new PDO('mysql:host=127.0.0.1;dbname=ci', 'travis');
-         *      }
-         *      $this->conn = $this->createDefaultDBConnection(self::$pdo, ':memory:');
-         *  }
-         *
-         *  return $this->conn;
-         */
     }
 
     /**
@@ -120,10 +111,5 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     protected function getDataSet()
     {
-        /**
-         * return new PHPUnit_Extensions_Database_DataSet_YamlDataSet(
-         *      __DIR__ . "/dataset/guestbook.yml"
-         * );
-         */
     }
 }
