@@ -10,18 +10,15 @@
 namespace FastD\Testing;
 
 
-use Faker\Factory;
 use FastD\Http\ServerRequest;
-use PHPUnit_Extensions_Database_DataSet_IDataSet;
-use PHPUnit_Extensions_Database_DB_IDatabaseConnection;
-use PHPUnit_Extensions_Database_TestCase;
+use PHPUnit_Framework_TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class TestCase
  * @package FastD\Testing
  */
-class WebTestCase extends PHPUnit_Extensions_Database_TestCase
+class WebTestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * @param $method
@@ -93,23 +90,5 @@ class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     public function isSuccessful(ResponseInterface $response)
     {
         $this->assertEquals(200, $response->getStatusCode());
-    }
-
-    /**
-     * Returns the test database connection.
-     *
-     * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
-     */
-    protected function getConnection()
-    {
-    }
-
-    /**
-     * Returns the test dataset.
-     *
-     * @return PHPUnit_Extensions_Database_DataSet_IDataSet
-     */
-    protected function getDataSet()
-    {
     }
 }
