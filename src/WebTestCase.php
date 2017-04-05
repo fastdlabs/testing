@@ -11,14 +11,14 @@ namespace FastD\Testing;
 
 
 use FastD\Http\ServerRequest;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Extensions_Database_TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class TestCase
  * @package FastD\Testing
  */
-class WebTestCase extends PHPUnit_Framework_TestCase
+abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
     /**
      * @param $method

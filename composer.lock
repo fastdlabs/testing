@@ -4,105 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3c73d1d5c902d809f4e6086afd13c79c",
-    "content-hash": "197e265365b83a6ced124d3397bd6db7",
+    "hash": "5e17bb7b01af08f14036dcd73ae45669",
+    "content-hash": "cc58555db701df168072f9bc82ad6fb8",
     "packages": [
-        {
-            "name": "fastd/http",
-            "version": "v3.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JanHuang/http.git",
-                "reference": "a1a3f0a6629f8972308bb27b2b00f44fdfe727cc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JanHuang/http/zipball/a1a3f0a6629f8972308bb27b2b00f44fdfe727cc",
-                "reference": "a1a3f0a6629f8972308bb27b2b00f44fdfe727cc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6",
-                "psr/http-message": "~1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "FastD\\Http\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "janhuang",
-                    "email": "bboyjanhuang@gmail.com"
-                }
-            ],
-            "description": "FastD Http",
-            "keywords": [
-                "FastD",
-                "http"
-            ],
-            "time": "2017-03-08 06:21:22"
-        },
-        {
-            "name": "psr/http-message",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "homepage": "https://github.com/php-fig/http-message",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2016-08-06 14:39:51"
-        }
-    ],
-    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
@@ -156,6 +60,50 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "fastd/http",
+            "version": "v3.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JanHuang/http.git",
+                "reference": "a1a3f0a6629f8972308bb27b2b00f44fdfe727cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JanHuang/http/zipball/a1a3f0a6629f8972308bb27b2b00f44fdfe727cc",
+                "reference": "a1a3f0a6629f8972308bb27b2b00f44fdfe727cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "psr/http-message": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastD\\Http\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "janhuang",
+                    "email": "bboyjanhuang@gmail.com"
+                }
+            ],
+            "description": "FastD Http",
+            "keywords": [
+                "FastD",
+                "http"
+            ],
+            "time": "2017-03-08 06:21:22"
         },
         {
             "name": "myclabs/deep-copy",
@@ -854,6 +802,56 @@
             "time": "2016-12-08 20:27:08"
         },
         {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06 14:39:51"
+        },
+        {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "1.0.1",
             "source": {
@@ -1472,6 +1470,7 @@
             "time": "2016-11-23 20:04:58"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
