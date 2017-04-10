@@ -37,7 +37,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $assert
      */
-    public function response(ResponseInterface $response, $assert)
+    public function equalsResponse(ResponseInterface $response, $assert)
     {
         $this->assertEquals((string) $response->getBody(), $assert);
     }
@@ -46,16 +46,27 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param array $assert
      */
-    public function json(ResponseInterface $response, array $assert)
+    public function equalsJson(ResponseInterface $response, array $assert)
     {
         $this->assertEquals((string) $response->getBody(), json_encode($assert));
     }
 
     /**
      * @param ResponseInterface $response
+     * @param $key
+     */
+    public function jsonResponseHasKey(ResponseInterface $response, $key)
+    {
+        $json = (string) $response->getBody();
+        $array = json_decode($json, true);
+        $this->assertArrayHasKey($key, $array);
+    }
+
+    /**
+     * @param ResponseInterface $response
      * @param $statusCode
      */
-    public function status(ResponseInterface $response, $statusCode)
+    public function equalsStatus(ResponseInterface $response, $statusCode)
     {
         $this->assertEquals($response->getStatusCode(), $statusCode);
     }
