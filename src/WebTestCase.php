@@ -20,6 +20,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
+    const JSON_OPTION = JSON_PRETTY_PRINT;
+
     /**
      * @param $method
      * @param $path
@@ -48,7 +50,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     public function json(ResponseInterface $response, array $assert)
     {
-        $this->assertEquals((string) $response->getBody(), json_encode($assert));
+        $this->assertEquals((string) $response->getBody(), json_encode($assert, static::JSON_OPTION));
     }
 
     /**
