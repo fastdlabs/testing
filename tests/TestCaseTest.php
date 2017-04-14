@@ -28,6 +28,6 @@ class TestCaseTest extends PHPUnit_Framework_TestCase
     {
         $testing = new TestCase();
 
-        $testing->response(new Response('hello world'), 'hello world');
+        $testing->equalsResponse(new Response('hello world'), 'hello world');
     }
 }

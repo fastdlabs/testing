@@ -23,6 +23,22 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     const JSON_OPTION = JSON_PRETTY_PRINT;
 
     /**
+     * Set up unit.
+     */
+    public function setUp()
+    {
+        null != $this->getConnection() && parent::setUp();
+    }
+
+    /**
+     * Tear down unit
+     */
+    public function tearDown()
+    {
+        null != $this->getConnection() && parent::tearDown();
+    }
+
+    /**
      * @param $method
      * @param $path
      * @param array $headers
