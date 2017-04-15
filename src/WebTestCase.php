@@ -73,11 +73,18 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $key
      */
-    public function jsonResponseHasKey(ResponseInterface $response, $key)
+    public function equalsJsonResponseHasKey(ResponseInterface $response, $key)
     {
         $json = (string) $response->getBody();
         $array = json_decode($json, true);
-        $this->assertArrayHasKey($key, $array);
+        if (is_string($key)) {
+            $keys = [$key];
+        } else {
+            $keys = $key;
+        }
+        foreach ($keys as $key) {
+            $this->assertArrayHasKey($key, $array);
+        }
     }
 
     /**
