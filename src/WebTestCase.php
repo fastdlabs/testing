@@ -52,12 +52,33 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @deprecated
+     * @param ResponseInterface $response
+     * @param $assert
+     */
+    public function response(ResponseInterface $response, $assert)
+    {
+        $this->equalsResponse($response, $assert);
+    }
+
+
+    /**
      * @param ResponseInterface $response
      * @param $assert
      */
     public function equalsResponse(ResponseInterface $response, $assert)
     {
         $this->assertEquals((string) $response->getBody(), $assert);
+    }
+
+    /**
+     * @deprecated
+     * @param ResponseInterface $response
+     * @param array $assert
+     */
+    public function json(ResponseInterface $response, array $assert)
+    {
+        $this->equalsJson($response, $assert);
     }
 
     /**
@@ -85,6 +106,16 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
         foreach ($keys as $key) {
             $this->assertArrayHasKey($key, $array);
         }
+    }
+
+    /**
+     * @deprecated
+     * @param ResponseInterface $response
+     * @param $statusCode
+     */
+    public function status(ResponseInterface $response, $statusCode)
+    {
+        $this->equalsStatus($response, $statusCode);
     }
 
     /**
