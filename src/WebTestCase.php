@@ -22,12 +22,20 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
     const JSON_OPTION = JSON_PRETTY_PRINT;
 
+    public function isLocal()
+    {
+        $addr = gethostbyname(gethostname());
+        return '127.0.0.1' === $addr;
+    }
+
     /**
      * Set up unit.
      */
     public function setUp()
     {
-        null != $this->getConnection() && parent::setUp();
+        if ($this->isLocal()) {
+            null != $this->getConnection() && parent::setUp();
+        }
     }
 
     /**
@@ -35,7 +43,9 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     public function tearDown()
     {
-        null != $this->getConnection() && parent::tearDown();
+        if ($this->isLocal()) {
+            null != $this->getConnection() && parent::tearDown();
+        }
     }
 
     /**

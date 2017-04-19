@@ -30,4 +30,10 @@ class TestCaseTest extends PHPUnit_Framework_TestCase
 
         $testing->equalsResponse(new Response('hello world'), 'hello world');
     }
+
+    public function testLocal()
+    {
+        $testing = new TestCase();
+        $this->assertTrue($testing->isLocal());
+    }
 }
