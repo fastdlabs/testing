@@ -34,6 +34,10 @@ class TestCaseTest extends PHPUnit_Framework_TestCase
     public function testLocal()
     {
         $testing = new TestCase();
-        $this->assertTrue($testing->isLocal());
+        if ($testing->isLocal()) {
+            echo 'local' . PHP_EOL;
+        } else {
+            echo gethostname() . PHP_EOL;
+        }
     }
 }
