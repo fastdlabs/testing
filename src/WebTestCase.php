@@ -82,6 +82,25 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
+     * @param ResponseInterface $response
+     */
+    public function equalsResponseEmpty(ResponseInterface $response)
+    {
+        $result = json_decode((string) $response->getBody(), true);
+        $this->assertEmpty($result);
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @param $count
+     */
+    public function equalsResponseCount(ResponseInterface $response, $count)
+    {
+        $result = json_decode((string) $response->getBody(), true);
+        $this->assertCount($count, $result);
+    }
+
+    /**
      * @deprecated
      * @param ResponseInterface $response
      * @param array $assert
