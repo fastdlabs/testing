@@ -13,6 +13,7 @@ namespace FastD\Testing;
 use FastD\Http\ServerRequest;
 use PHPUnit_Extensions_Database_TestCase;
 use Psr\Http\Message\ResponseInterface;
+use FastD\Http\JsonResponse;
 
 /**
  * Class TestCase
@@ -116,7 +117,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      */
     public function equalsJson(ResponseInterface $response, array $assert)
     {
-        $this->assertEquals((string) $response->getBody(), json_encode($assert, static::JSON_OPTION));
+        $this->assertEquals((string) $response->getBody(), json_encode($assert, JsonResponse::JSON_OPTIONS));
     }
 
     /**
