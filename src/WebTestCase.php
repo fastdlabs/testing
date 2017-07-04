@@ -20,7 +20,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
-    const JSON_OPTION = JSON_PRETTY_PRINT;
+    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
 
     public function isLocal()
     {
