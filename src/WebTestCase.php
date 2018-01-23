@@ -23,6 +23,9 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
 {
     const JSON_OPTION = JSON_UNESCAPED_UNICODE;
 
+    /**
+     * @return bool
+     */
     public function isLocal()
     {
         $addr = gethostbyname(gethostname());
@@ -30,7 +33,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     }
 
     /**
-     * Set up unit.
+     *
      */
     public function setUp()
     {
