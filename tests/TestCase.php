@@ -1,5 +1,8 @@
 <?php
+
 use FastD\Testing\WebTestCase;
+use PHPUnit\DbUnit\Database\DataSet;
+
 
 /**
  * @author    jan huang <bboyjanhuang@gmail.com>
@@ -15,9 +18,7 @@ class TestCase extends WebTestCase
     private $conn = null;
 
     /**
-     * Returns the test database connection.
-     *
-     * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
+     * @return null|\PHPUnit\DbUnit\Database\Connection|\PHPUnit\DbUnit\Database\DefaultConnection
      */
     protected function getConnection()
     {
@@ -32,14 +33,20 @@ class TestCase extends WebTestCase
     }
 
     /**
-     * Returns the test dataset.
-     *
-     * @return PHPUnit_Extensions_Database_DataSet_IDataSet
+     * @return DataSet|\PHPUnit\DbUnit\DataSet\IDataSet
      */
     protected function getDataSet()
     {
-        return new PHPUnit_Extensions_Database_DataSet_YamlDataSet(
+        return new DataSet(
             __DIR__ . "/dataset/guestbook.yml"
         );
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLocal(): bool
+    {
+        return true;
     }
 }
