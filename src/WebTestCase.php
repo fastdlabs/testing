@@ -1,17 +1,18 @@
 <?php
 /**
  * @author    jan huang <bboyjanhuang@gmail.com>
- * @copyright 2016
+ * @copyright 2018
  *
- * @link      https://www.github.com/janhuang
- * @link      http://www.fast-d.cn/
+ * @link      https://www.github.com/fastdlabs
+ * @link      https://www.fastdlabs.com/
  */
 
 namespace FastD\Testing;
 
 
 use FastD\Http\ServerRequest;
-use PHPUnit_Extensions_Database_TestCase;
+use PHPUnit\DbUnit\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use FastD\Http\JsonResponse;
 
@@ -19,23 +20,19 @@ use FastD\Http\JsonResponse;
  * Class TestCase
  * @package FastD\Testing
  */
-abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
+abstract class WebTestCase extends TestCase
 {
-    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
+    use TestCaseTrait;
 
     /**
      * @return bool
      */
-    public function isLocal()
-    {
-        $addr = gethostbyname(gethostname());
-        return '127.0.0.1' === $addr;
-    }
+    abstract public function isLocal(): bool;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         if ($this->isLocal()) {
             null != $this->getConnection() && parent::setUp();
@@ -45,7 +42,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * Tear down unit
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         if ($this->isLocal()) {
             null != $this->getConnection() && parent::tearDown();
@@ -58,7 +55,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param array $headers
      * @return ServerRequest
      */
-    public function request($method, $path, array $headers = [])
+    public function request(string $method, string $path, array $headers = []): ServerRequest
     {
         $serverRequest = new ServerRequest($method, $path, $headers);
 
@@ -70,7 +67,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $assert
      */
-    public function response(ResponseInterface $response, $assert)
+    public function response(ResponseInterface $response, $assert): void
     {
         $this->equalsResponse($response, $assert);
     }
@@ -80,7 +77,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $assert
      */
-    public function equalsResponse(ResponseInterface $response, $assert)
+    public function equalsResponse(ResponseInterface $response, $assert): void
     {
         $this->assertEquals((string) $response->getBody(), $assert);
     }
@@ -88,7 +85,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * @param ResponseInterface $response
      */
-    public function equalsResponseEmpty(ResponseInterface $response)
+    public function equalsResponseEmpty(ResponseInterface $response): void
     {
         $result = json_decode((string) $response->getBody(), true);
         $this->assertEmpty($result);
@@ -98,7 +95,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $count
      */
-    public function equalsResponseCount(ResponseInterface $response, $count)
+    public function equalsResponseCount(ResponseInterface $response, int $count): void
     {
         $result = json_decode((string) $response->getBody(), true);
         $this->assertCount($count, $result);
@@ -109,7 +106,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param array $assert
      */
-    public function json(ResponseInterface $response, array $assert)
+    public function json(ResponseInterface $response, array $assert): void
     {
         $this->equalsJson($response, $assert);
     }
@@ -118,7 +115,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param array $assert
      */
-    public function equalsJson(ResponseInterface $response, array $assert)
+    public function equalsJson(ResponseInterface $response, array $assert): void
     {
         $this->assertEquals((string) $response->getBody(), json_encode($assert, JsonResponse::JSON_OPTIONS));
     }
@@ -127,7 +124,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $key
      */
-    public function equalsJsonResponseHasKey(ResponseInterface $response, $key)
+    public function equalsJsonResponseHasKey(ResponseInterface $response, string $key): void
     {
         $json = (string) $response->getBody();
         $array = json_decode($json, true);
@@ -146,7 +143,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $statusCode
      */
-    public function status(ResponseInterface $response, $statusCode)
+    public function status(ResponseInterface $response, $statusCode): void
     {
         $this->equalsStatus($response, $statusCode);
     }
@@ -155,7 +152,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
      * @param ResponseInterface $response
      * @param $statusCode
      */
-    public function equalsStatus(ResponseInterface $response, $statusCode)
+    public function equalsStatus(ResponseInterface $response, $statusCode): void
     {
         $this->assertEquals($response->getStatusCode(), $statusCode);
     }
@@ -163,7 +160,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * @param ResponseInterface $response
      */
-    public function isServerInterval(ResponseInterface $response)
+    public function isServerInterval(ResponseInterface $response): void
     {
         $this->assertEquals(500, $response->getStatusCode());
     }
@@ -171,7 +168,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * @param ResponseInterface $response
      */
-    public function isBadRequest(ResponseInterface $response)
+    public function isBadRequest(ResponseInterface $response): void
     {
         $this->assertEquals(400, $response->getStatusCode());
     }
@@ -179,7 +176,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * @param ResponseInterface $response
      */
-    public function isNotFound(ResponseInterface $response)
+    public function isNotFound(ResponseInterface $response): void
     {
         $this->assertEquals(404, $response->getStatusCode());
     }
@@ -187,7 +184,7 @@ abstract class WebTestCase extends PHPUnit_Extensions_Database_TestCase
     /**
      * @param ResponseInterface $response
      */
-    public function isSuccessful(ResponseInterface $response)
+    public function isSuccessful(ResponseInterface $response): void
     {
         $this->assertEquals(200, $response->getStatusCode());
     }
