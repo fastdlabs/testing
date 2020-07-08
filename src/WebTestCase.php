@@ -55,11 +55,9 @@ abstract class WebTestCase extends TestCase
      * @param array $headers
      * @return ServerRequest
      */
-    public function request(string $method, string $path, array $headers = []): ServerRequest
+    public function createRequest(string $method, string $path, array $headers = []): ServerRequest
     {
-        $serverRequest = new ServerRequest($method, $path, $headers);
-
-        return $serverRequest;
+        return new ServerRequest($method, $path, $headers);
     }
 
     /**
